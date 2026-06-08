@@ -5,11 +5,13 @@ to solve combinatorial search and constraint satisfaction problems.
 
 ## Problems Covered
 
-- K-SAT
-- Graph Coloring
-- N-Queens
-- Subset Sum
-- Additional CSP formulations
+- [ ] Grover basics
+- [ ] Oracle construction framework
+- [ ] 3-SAT implementation
+- [ ] Graph coloring implementation
+- [ ] N-Queens implementation
+- [ ] Performance analysis
+- [ ] Final report
 
 ## Objectives
 
