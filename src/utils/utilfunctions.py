@@ -1,5 +1,20 @@
 import random
 from typing import Dict
+import networkx as nx
+import matplotlib.pyplot as plt
+import numpy as np
+
+palette = [
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "purple",
+    "orange",
+    "cyan",
+    "pink"
+]
+
 
 def graphGen(n:int)-> Dict[int, set]:
     MaxnumEdge = n * (n-1)//2
@@ -60,7 +75,9 @@ def get_edges(graph):
             edges.add(edge)
     return list(edges)
 
-def draw_graph(colorings , G):
+
+def draw_graph(colorings , G , pos):
+    # pos = nx.spring_layout(G, seed=42)
     n = len(colorings)
     
     cols = min(4, n)              # max 4 graphs per row
@@ -69,7 +86,7 @@ def draw_graph(colorings , G):
     fig, axes = plt.subplots(
         rows,
         cols,
-        figsize=(5 * cols, 5 * rows)
+        figsize=(3 * cols, 3 * rows)
     )
     
     # Makes indexing easier when rows/cols = 1
@@ -101,3 +118,65 @@ def draw_graph(colorings , G):
     
     plt.tight_layout()
     plt.show()
+
+
+
+def draw_simple_graph( G,pos):
+    plt.figure(figsize=(3,3))
+    nx.draw(
+        G,
+        pos,
+        with_labels=True,
+        node_size=800,
+        arrows=False
+    )
+
+
+
+def get_graph(graph):
+    G = nx.DiGraph()
+    for node , Neighbors in graph.items():
+        for i in Neighbors:
+            G.add_edge(node,i)
+    return G
+
+
+
+def get_pos(G):
+    return nx.spring_layout(G, seed=42)
+
+
+
+def factor(N):
+    fac = 1
+    for i in range(1, N+1):
+        fac *= i
+    return fac
+
+
+def translator(N, K, counts):
+    colors = []
+    for seq, _ in counts.items():
+        seq = seq[::-1]             
+        colorsample = {}
+        for n in range(N):
+            block = seq[n*K:(n+1)*K]
+            colorsample[n] = block.index('1')
+        colors.append(colorsample)
+    return colors
+
+
+def edge_map(coloring , edges):
+    flag = True
+    for nodeA , nodeB in list(edges):
+        flag = flag and (coloring[nodeA] != coloring[nodeB])
+    return flag
+
+
+def answer_validity(colorings , edges):
+    valid_colorings = []
+    for coloring in colorings:
+        if edge_map(coloring , edges) :
+            if coloring not in valid_colorings:
+                valid_colorings.append(coloring)
+    return valid_colorings
