@@ -8,7 +8,7 @@ to solve combinatorial search and constraint satisfaction problems.
 - [ ] Grover basics
 - [ ] Oracle construction framework
 - [ ] 3-SAT implementation
-- [ ] Graph coloring implementation
+- [x] Graph coloring implementation
 - [ ] N-Queens implementation
 - [ ] Performance analysis
 - [ ] Final report
