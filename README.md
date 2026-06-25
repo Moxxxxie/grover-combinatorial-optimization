@@ -12,6 +12,7 @@ to solve combinatorial search and constraint satisfaction problems.
 - [ ] N-Queens implementation
 - [ ] Performance analysis
 - [ ] Final report
+- [ ] Graph Tessellation
 
 ## Objectives
 
