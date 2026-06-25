@@ -9,10 +9,10 @@ to solve combinatorial search and constraint satisfaction problems.
 - [ ] Oracle construction framework
 - [ ] 3-SAT implementation
 - [x] Graph coloring implementation
+- [ ] Graph Tessellation
 - [ ] N-Queens implementation
 - [ ] Performance analysis
 - [ ] Final report
-- [ ] Graph Tessellation
 
 ## Objectives
 
